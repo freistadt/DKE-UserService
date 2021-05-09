@@ -16,7 +16,7 @@ public class InitializationComponent {
     @PostConstruct
     private void init(){
 
-        userRepository.deleteAll();
+        //userRepository.deleteAll();
 
         User user=new User();
         user.setEmail("user1.Mail@gmx.at");
@@ -26,6 +26,7 @@ public class InitializationComponent {
         user.setPicture("test");
         user.setNickname("u1");
         user.setSub("testSub");
+        System.out.println("Saving User1");
         userRepository.save(user);
 
         user=new User();
