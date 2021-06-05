@@ -1,5 +1,7 @@
 package com.userservice.demo;
 
+import com.userservice.demo.model.User;
+import com.userservice.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

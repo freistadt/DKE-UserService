@@ -1,5 +1,7 @@
 package com.userservice.demo;
 
+import com.userservice.demo.model.User;
+import com.userservice.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,29 +16,36 @@ public class InitializationComponent {
     private UserRepository userRepository;
 
     @PostConstruct
-    private void init(){
+    private void init() {
 
         //userRepository.deleteAll();
 
-        User user=new User();
-        user.setEmail("user1.Mail@gmx.at");
-        user.setName("user1");
-        user.setEmail_verified("no");
-        user.setUpdated_at("yesterday");
-        user.setPicture("test");
-        user.setNickname("u1");
-        user.setSub("testSub");
-        System.out.println("Saving User1");
-        userRepository.save(user);
+        User user3 = new User();
+        user3.setEmail("user3.Mail@gmx.at");
+        user3.setName("user3");
+        user3.setEmail_verified("no");
+        user3.setUpdated_at("yesterday");
+        user3.setPicture("test");
+        user3.setNickname("u3");
+        user3.setSub("testSub");
 
-        user=new User();
-        user.setEmail("user2.Mail@gmx.at");
-        user.setName("user2");
-        user.setEmail_verified("no");
-        user.setUpdated_at("today");
-        user.setPicture("test2");
-        user.setNickname("u2");
-        user.setSub("testSub2");
-        userRepository.save(user);
+        if(!userRepository.existsById(user3.getNickname())){
+            System.out.println("new user added");
+            userRepository.save(user3);
+            send_to_neo(user3);
+        } else {
+            System.out.println("user already exists");
+        }
+
+        System.out.println(userRepository.toString());
+        System.out.println(userRepository.count());
+
+        for(User u: userRepository.findAll()) {
+            System.out.println(u);
+        }
+    }
+
+    public void send_to_neo (User u) {
+        System.out.println("Sending to NEO4j" + u.toString());
     }
 }
