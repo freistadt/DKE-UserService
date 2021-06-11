@@ -6,70 +6,61 @@ import org.springframework.data.annotation.Id;
 @Data
 public class User {
     @Id
-    private String nickname;
-    private String name;
-    private String picture;
-    private String updated_at;
-    private String email;
-    private String email_verified;
-    private String sub;
+    private String id;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String token;
 
     public User(){
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getId() {
+        return id;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUpdated_at() {
-        return updated_at;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUpdated_at(String updated_at) {
-        this.updated_at = updated_at;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getEmail_verified() {
-        return email_verified;
+    public String getToken() {
+        return token;
     }
 
-    public void setEmail_verified(String email_verified) {
-        this.email_verified = email_verified;
-    }
-
-    public String getSub() {
-        return sub;
-    }
-
-    public void setSub(String sub) {
-        this.sub = sub;
+    public void setToken(String token) {
+        this.token = token;
     }
 }
