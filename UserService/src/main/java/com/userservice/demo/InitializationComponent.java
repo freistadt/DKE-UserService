@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-//class to get in some dummy data
-
 @Component
 public class InitializationComponent {
 
@@ -17,7 +15,6 @@ public class InitializationComponent {
 
     @PostConstruct
     private void init() {
-
         //userRepository.deleteAll();
 
 //        User user3 = new User();
@@ -43,9 +40,5 @@ public class InitializationComponent {
 //        for(User u: userRepository.findAll()) {
 //            System.out.println(u);
 //        }
-    }
-
-    public void send_to_neo (User u) {
-        System.out.println("Sending to NEO4j" + u.toString());
     }
 }

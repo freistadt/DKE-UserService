@@ -1,14 +1,11 @@
 package com.userservice.demo;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.userservice.demo.model.User;
 import com.userservice.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -58,7 +55,6 @@ public class UserRestController {
 
         List<User> existingUser = userRepository.findByUsername(newUser.getUsername());
         if (existingUser.size()>0) {
-            System.out.println("user already exists");
             return new ResponseEntity(HttpStatus.FORBIDDEN);
         }
 
@@ -66,7 +62,6 @@ public class UserRestController {
         HttpResponse<String> response = null;
 
         try{
-            System.out.println("trying to send user to neo4j");
             response = this.sendRequest(request);
             int statusCode = response.statusCode();
             if(statusCode<200 || statusCode>299) {
@@ -83,7 +78,6 @@ public class UserRestController {
     @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.POST)
     public long getUser() {return userRepository.count();}
-
 
     private HttpRequest buildPutRequest(String username) {
         return HttpRequest.newBuilder()
